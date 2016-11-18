@@ -71,10 +71,9 @@ public class Main {
             gauss.calcRoots();
             double[] tmpRoots = gauss.getRoots();
             for (int j = 0; j < size; j++) {
-                inverseMatrix[i][j] = tmpRoots[j];
+                inverseMatrix[j][i] = tmpRoots[j];
             }
         }
-        inverseMatrix = transposeMatrix(inverseMatrix);
         return inverseMatrix;
     }
 
@@ -128,17 +127,6 @@ public class Main {
             System.out.println();
         }
         System.out.println();
-    }
-
-    private static double[][] transposeMatrix(double[][] mtr) {
-        for (int i = 0; i < size; i++) {
-            for (int j = i + 1; j < size; j++) {
-                double tmp = mtr[i][j];
-                mtr[i][j] = mtr[j][i];
-                mtr[j][i] = tmp;
-            }
-        }
-        return mtr;
     }
 
 }

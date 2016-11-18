@@ -29,23 +29,23 @@ class Gauss {
 
     public void printVarNum() {
         for (int i = 0; i < size; i++) {
-            System.out.print(varNum[i] + " ");
+            System.out.println(varNum[i] + " ");
         }
-        System.out.println("\n");
+        System.out.println();
     }
 
     public void printRoots() {
         for (int i = 0; i < size; i++) {
-            System.out.print(roots[i] + " ");
+            System.out.println(roots[i] + " ");
         }
-        System.out.println("\n");
+        System.out.println();
     }
 
     public void printLeadingElements() {
         for (int i = 0; i < size; i++) {
-            System.out.print(leadingElements[i] + " ");
+            System.out.println(leadingElements[i] + " ");
         }
-        System.out.println("\n");
+        System.out.println();
     }
 
     public void printDeterminant() {
@@ -54,9 +54,9 @@ class Gauss {
 
     public void printResidualVector() {
         for (int i = 0; i < size; i++) {
-            System.out.print(residualVector[i] + " ");
+            System.out.println(residualVector[i] + " ");
         }
-        System.out.println("\n");
+        System.out.println();
     }
 
     private int findMaxInString(int strIndex) {

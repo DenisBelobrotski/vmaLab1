@@ -8,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
         gaussMethod();
-        printInverseMatrix();
+        printResidualMatrix();
 
     }
 
@@ -39,13 +39,18 @@ public class Main {
         gauss.printResidualVector();
     }
 
-    private static void printInverseMatrix() {
+    private static void printResidualMatrix() {
+        double[][] identityMatrix = new double[size][size];
+        for (int i = 0; i < size; i++) {
+            identityMatrix[i][i] = 1;
+        }
         double[][] inverseMatrix = getInverseMatrix();
         System.out.println("Inverse matrix (A^(-1)):\n");
         printMatrix(inverseMatrix, size, size);
-        double[][] mulMtr = mulMatrix(mtrA, size, size, inverseMatrix, size);
-        System.out.println("A * A^(-1) = \n");
-        printMatrix(mulMtr, size, size);
+        double[][] residualMatrix = mulMatrix(mtrA, size, size, inverseMatrix, size);
+        residualMatrix = subMatrix(residualMatrix, identityMatrix, size, size);
+        System.out.println("Residual Matrix:\n");
+        printMatrix(residualMatrix, size, size);
     }
 
     private static double[][] getInverseMatrix() {

@@ -6,6 +6,7 @@ class Gauss {
     private double[] leadingElements = {0, 0, 0, 0, 0};
     private double determinant = 0;
     private double[] residualVector = {0, 0, 0, 0, 0};
+    private double residualVectorNorm = 0;
 
     public Gauss(double[][] mtrA, double[] freeMembers) {
         extendedMtr = new double[5][6];
@@ -57,6 +58,10 @@ class Gauss {
             System.out.println(residualVector[i] + " ");
         }
         System.out.println();
+    }
+
+    public void printResidualVectorNorm() {
+        System.out.println(residualVectorNorm + "\n");
     }
 
     private int findMaxInString(int strIndex) {
@@ -170,6 +175,15 @@ class Gauss {
         res = Main.subMatrix(res, mtrB, size, 1);
         for (int i = 0; i < size; i++) {
             residualVector[i] = res[i][0];
+        }
+    }
+
+    public void calcResidualVectorNorm() {
+        residualVectorNorm = residualVector[0];
+        for (int i = 1; i < size; i++) {
+            if (residualVector[i] > residualVectorNorm) {
+                residualVectorNorm = residualVector[i];
+            }
         }
     }
 

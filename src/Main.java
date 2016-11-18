@@ -37,6 +37,9 @@ public class Main {
         gauss.calcResidualVector();
         System.out.println("Residual vector:\n");
         gauss.printResidualVector();
+        gauss.calcResidualVectorNorm();
+        System.out.println("Norm of residual vector:\n");
+        gauss.printResidualVectorNorm();
     }
 
     private static void printResidualMatrix() {
@@ -51,6 +54,8 @@ public class Main {
         residualMatrix = subMatrix(residualMatrix, identityMatrix, size, size);
         System.out.println("Residual Matrix:\n");
         printMatrix(residualMatrix, size, size);
+        System.out.println("Norm of residual matrix:\n");
+        System.out.println(getMatrixNorm(residualMatrix) + "\n");
     }
 
     private static double[][] getInverseMatrix() {
@@ -71,6 +76,21 @@ public class Main {
         }
         inverseMatrix = transposeMatrix(inverseMatrix);
         return inverseMatrix;
+    }
+
+    private static double getMatrixNorm(double[][] mtr) {
+        double tmp = 0;
+        double norm = 0;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                tmp += Math.abs(mtr[i][j]);
+            }
+            if (tmp > norm) {
+                norm = tmp;
+            }
+            tmp = 0;
+        }
+        return norm;
     }
 
     public static double[][] mulMatrix(double[][] a, int n1, int m1, double[][] b, int m2) {
